@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded())
 
 app.use('/api/v1', v1);
-app.get('/test', asyncHandler(async (req, res) => {
+app.get('/', asyncHandler(async (req, res) => {
    res.status(StatusCodes.OK).json({
       message: "API is running"
    })
