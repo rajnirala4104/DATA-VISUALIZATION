@@ -5,7 +5,9 @@ import { _ROUTER } from "./routers"
 function App() {
 
   return (
-    <RouterProvider router={_ROUTER} />
+    <React.Fragment>
+      <RouterProvider router={_ROUTER} />
+    </React.Fragment>
   )
 }
 
