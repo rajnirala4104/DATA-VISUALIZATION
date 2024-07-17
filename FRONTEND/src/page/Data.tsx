@@ -107,7 +107,7 @@ const Data: React.FC = () => {
                      />
                   </div>
                </div>
-               <div className="graphsAndChartsContainer flex lg:w-[80%] h-[75%] lg:h-[80%] justify-evenly items-center w-full mt-6 border border-red-500 ">
+               <div className="graphsAndChartsContainer flex lg:w-[80%] h-[75%] lg:h-[80%] justify-evenly items-center w-full mt-6 ">
                   {chart === "area" && <AreaChartComponents data={finalChartData} />}
                   {chart === "bar" && <BarChartComponent data={finalChartData} />}
                   {chart === "line" && <LinkChartComponent data={finalChartData} />}
