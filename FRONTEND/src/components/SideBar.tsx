@@ -17,7 +17,7 @@ const SideBar: React.FC = () => {
 
 
    return (
-      <div className="lg:flex lg:w-[30%] w-full lg:relative lg:top-0 absolute bottom-24 ">
+      <div className="lg:flex lg:w-[30%] w-full lg:relative lg:top-0 absolute bottom-0 ">
          <div
             className={`inset-y-0 left-0 w-full absolute bottom-0 z-30 transition-transform transform bg-gray-800 text-white lg:static lg:inset-0 justify-center  items-center`}
          >
