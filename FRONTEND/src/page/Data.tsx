@@ -55,10 +55,9 @@ const Data: React.FC = () => {
    return (
       <Fragment>
          <Suspense fallback={"loading.."}>
-
             <div className='bg-gray-100 w-full flex flex-col justify-start items-center'>
-               <div className="filters w-full h-[10%]  flex justify-around items-center overflow-x-auto space-x-1">
-                  <div className="yearFilter" >
+               <div className="filters w-full h-[10%]  flex flex-wrap justify-around items-center space-x-1">
+                  <div className="yearFilter m-1" >
                      <FilterDropdown
                         title='end_year'
                         setSelectedObject={setGetSelectedValueObject}
@@ -108,7 +107,7 @@ const Data: React.FC = () => {
                      />
                   </div>
                </div>
-               <div className="graphsAndChartsContainer flex lg:w-[80%] h-[65%] lg:h-[80%] justify-evenly items-center w-full mt-3">
+               <div className="graphsAndChartsContainer flex lg:w-[80%] h-[75%] lg:h-[80%] justify-evenly items-center w-full mt-6 border border-red-500 ">
                   {chart === "area" && <AreaChartComponents data={finalChartData} />}
                   {chart === "bar" && <BarChartComponent data={finalChartData} />}
                   {chart === "line" && <LinkChartComponent data={finalChartData} />}

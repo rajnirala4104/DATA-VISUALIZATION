@@ -19,28 +19,35 @@ const FilterDropdown: React.FC<FilterProps> = (props) => {
 
    return (
       <Fragment >
-         <div onMouseLeave={() => setDropDownToggel(false)}>
-            <button data-ripple-light="true" onClick={() => setDropDownToggel(!dropDownToggel)} data-popover-target="menu"
-               className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none flex justify-end items-center">
-               {props.title}
-               <DropDownIcon classes='ml-2' />
-            </button>
-            <ul
-               onBlur={() => setDropDownToggel(false)}
-               role="menu" data-popover="menu" data-popover-placement="bottom"
-               className={`absolute z-10 lg:mt-0 mt-2 min-w-[180px] h-[60vh] ${dropDownToggel ? "block" : "hidden"} overflow-y-auto transition transition-duration-300 rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none`}
-            >
-               {props.options?.map((data, index) => (
-                  <li key={index} role="menuitem"
-                     className="hover:bg-slate-200 block w-full cursor-pointer select-none rounded-md px-3 pt-[9px] pb-2 text-start leading-tight transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
-                     onBlur={() => setDropDownToggel(false)}
-                     onClick={() => handlerSetData(data)}
-                  >
-                     {data}
-                  </li>
-               ))}
-            </ul>
+         <div onMouseLeave={() => setDropDownToggel(false)} className="relative inline-block text-left ">
+            <div>
+               <button
+                  onClick={() => setDropDownToggel(!dropDownToggel)}
+                  type="button" className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                  {props.title}
+                  <svg className="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+               </button>
+            </div>
+
+            <div className={`absolute left-0 ${dropDownToggel ? "block" : "hidden"} z-50 mt-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none h-[30rem] overflow-y-auto`}
+               id="menu" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+               <ul className="py-1" role="none">
+                  {props.options?.map((data, index) => (
+                     <li
+                        key={index}
+                        className="block cursor-pointer hover:bg-slate-200 px-4 py-2 text-sm text-gray-700" role="menuitem" id="menu-item-0"
+                        onClick={() => handlerSetData(data)}
+                        onBlur={() => setDropDownToggel(false)}
+                     >
+                        {data}
+                     </li>
+                  ))}
+               </ul>
+            </div>
          </div>
+
       </Fragment >
    )
 }
