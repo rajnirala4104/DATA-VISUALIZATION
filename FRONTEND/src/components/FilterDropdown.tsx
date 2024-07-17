@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react'
-import DropDownIcon from '../icons';
 import { setSelectedValueObject } from '../interface';
 
 interface FilterProps {
