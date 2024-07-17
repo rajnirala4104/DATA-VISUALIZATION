@@ -28,7 +28,7 @@ const FilterDropdown: React.FC<FilterProps> = (props) => {
             <ul
                onBlur={() => setDropDownToggel(false)}
                role="menu" data-popover="menu" data-popover-placement="bottom"
-               className={`absolute z-10 mt-2 min-w-[180px] h-[60vh] ${dropDownToggel ? "block" : "hidden"} overflow-y-auto transition transition-duration-300 rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none`}
+               className={`absolute z-10 lg:mt-0 mt-2 min-w-[180px] h-[60vh] ${dropDownToggel ? "block" : "hidden"} overflow-y-auto transition transition-duration-300 rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none`}
             >
                {props.options?.map((data, index) => (
                   <li key={index} role="menuitem"
