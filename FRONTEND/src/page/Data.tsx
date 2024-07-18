@@ -13,39 +13,74 @@ const Data: React.FC = () => {
    const [getSelectedValueObject, setGetSelectedValueObject] = useState<setSelectedValueObject[]>();
    const [finalChartData, setFinalChartData] = useState<dataSingleObject[]>([])
 
+   // Create a cache to store the distinct values fetched from the API
+   const cache = new Map<string, any>();
+
+   // Function to fetch distinct values from the API with caching
+   // If the value is already in the cache, return it from the cache
+   // Otherwise, fetch the value from the API and store it in the cache for future use
+   const distinctValueWithCache = async (key: string): Promise<any> => {
+      // Check if the value is already in the cache
+      if (cache.has(key)) {
+         // If it is, return the value from the cache
+         return cache.get(key);
+      }
+      // If it is not, fetch the value from the API
+      const response = await distinctValue(key);
+      // Store the fetched value in the cache
+      cache.set(key, response.data.data);
+      // Return the fetched value
+      return response.data.data;
+   };
+
+   // Function to fetch distinct values for multiple keys and set them in the state
    const getDistinctValues = async (filterKey: string[]) => {
+      console.log("Running getDistinctValues...");
       try {
+         // Create an array of promises to fetch distinct values for each key
          const promises = filterKey.map(async (singleKey) => {
-            const response = await distinctValue(singleKey);
-            return { [singleKey]: response.data.data };
+            const data = await distinctValueWithCache(singleKey);
+            return { [singleKey]: data };
          });
+
+         // Wait for all the promises to resolve and get the results
          const results = await Promise.all(promises);
 
-         const finalObject = results.reduce((acc, result) => {
+         // Combine the results into a single object
+         const finalObject: allTheFilterDistinctDataInterface = results.reduce((acc, result) => {
             return { ...acc, ...result };
-         }, {});
+         }, {} as allTheFilterDistinctDataInterface);
 
+         // Set the final object in the state
          setAllTheFilterDistinctValues(finalObject);
       } catch (error) {
-         console.error("Oops!! something went wrong", error);
+         console.error("Oops!! Something went wrong", error);
       }
    };
 
-
+   // Function to search for data based on selected values and set the final chart data in the state
    const search = async () => {
-      if (!getSelectedValueObject) return
+      // Check if there are any selected values
+      if (!getSelectedValueObject) return;
+      // Get the first selected value
       const { key, value } = getSelectedValueObject[0];
+      // Make a search request with the selected value and set the final chart data in the state
       const response = await searchData({ queryKey: key, queryValue: value });
       setFinalChartData(response.data.data);
    };
 
+   // Effect to fetch distinct values when the component mounts
    useEffect(() => {
-      const keysArr = ["end_year", "topic", "source", "country", "pestle", "sector", "intensity", "region"]
+      // Array of keys for which to fetch distinct values
+      const keysArr = ["end_year", "topic", "source", "country", "pestle", "sector", "intensity", "region"];
+      // Fetch distinct values for the keys and set them in the state
       getDistinctValues(keysArr);
    }, [])
 
+   // Effect to search for data when the selected values change
    useEffect(() => {
-      search()
+      // Search for data based on the selected values and set the final chart data in the state
+      search();
    }, [getSelectedValueObject])
 
    document.title = "Data"

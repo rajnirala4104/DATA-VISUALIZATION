@@ -19,14 +19,7 @@ export interface dataSingleObject {
 }
 
 export interface allTheFilterDistinctDataInterface {
-   end_year: string[],
-   topic: string[],
-   region: string[],
-   country: string[],
-   source: string[],
-   pestle: string[],
-   sector: string[],
-   intensity: string[]
+   [key: string]: any;
 }
 
 export interface setSelectedValueObject {
