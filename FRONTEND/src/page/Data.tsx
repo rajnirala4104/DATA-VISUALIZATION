@@ -15,31 +15,29 @@ const Data: React.FC = () => {
 
    const getDistinctValues = async (filterKey: string[]) => {
       try {
-         let finalObject = Object.create(null);
-         for (let i = 0; i < filterKey.length; i++) {
-            let singleKey = filterKey[i];
-            let response = await distinctValue(singleKey);
-            finalObject[singleKey] = response.data.data
-         }
-         setAllTheFilterDistinctValues(finalObject)
+         const promises = filterKey.map(async (singleKey) => {
+            const response = await distinctValue(singleKey);
+            return { [singleKey]: response.data.data };
+         });
+         const results = await Promise.all(promises);
+
+         const finalObject = results.reduce((acc, result) => {
+            return { ...acc, ...result };
+         }, {});
+
+         setAllTheFilterDistinctValues(finalObject);
       } catch (error) {
-         console.error("Oops!! something went wrong", error)
+         console.error("Oops!! something went wrong", error);
       }
-   }
+   };
+
 
    const search = async () => {
-      try {
-         if (!getSelectedValueObject) return
-         const searchResponse = await searchData({
-            queryKey: getSelectedValueObject[0].key,
-            queryValue: getSelectedValueObject[0].value
-         });
-         console.log(searchResponse.request)
-         setFinalChartData(searchResponse.data.data)
-      } catch (error) {
-         alert("Oops!!")
-      }
-   }
+      if (!getSelectedValueObject) return
+      const { key, value } = getSelectedValueObject[0];
+      const response = await searchData({ queryKey: key, queryValue: value });
+      setFinalChartData(response.data.data);
+   };
 
    useEffect(() => {
       const keysArr = ["end_year", "topic", "source", "country", "pestle", "sector", "intensity", "region"]
@@ -49,7 +47,6 @@ const Data: React.FC = () => {
    useEffect(() => {
       search()
    }, [getSelectedValueObject])
-
 
    document.title = "Data"
    return (

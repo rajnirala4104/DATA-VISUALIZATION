@@ -33,6 +33,7 @@ const FilterDropdown: React.FC<FilterProps> = (props) => {
             <div className={`absolute left-0 ${dropDownToggel ? "block" : "hidden"} z-50 mt-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none h-[30rem] overflow-y-auto`}
                id="menu" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
                <ul className="py-1" role="none">
+
                   {props.options?.map((data, index) => (
                      <li
                         key={index}

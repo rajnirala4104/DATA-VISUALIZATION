@@ -10,7 +10,6 @@ export const distinctValue = (key: string) => {
 }
 
 export const searchData = (queries: { queryKey: string, queryValue: string }) => {
-   console.log(queries.queryKey, queries.queryValue)
    return http.get(`${ENDPOINTS.search}?${queries.queryKey}=${queries.queryValue}`);
 }
 
