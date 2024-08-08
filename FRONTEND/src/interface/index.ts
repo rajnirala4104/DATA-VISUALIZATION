@@ -17,12 +17,3 @@ export interface dataSingleObject {
    title?: string,
    likelihood?: number
 }
-
-export interface allTheFilterDistinctDataInterface {
-   [key: string]: any;
-}
-
-export interface setSelectedValueObject {
-   key: string,
-   value: string
-}
