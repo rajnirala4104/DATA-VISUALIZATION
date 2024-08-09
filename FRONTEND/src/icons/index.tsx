@@ -1,13 +1,90 @@
-import React from 'react'
+import React from "react";
 
 interface IconsProp {
    classes?: string;
 }
 
-const DropDownIcon: React.FC<IconsProp> = ({ classes }) => {
+export const DropDownIcon: React.FC<IconsProp> = ({ classes }) => {
    return (
-      <svg className={classes} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path></svg>
-   )
-}
+      <svg
+         className={classes}
+         stroke="currentColor"
+         fill="currentColor"
+         strokeWidth="0"
+         viewBox="0 0 1024 1024"
+         height="1em"
+         width="1em"
+         xmlns="http://www.w3.org/2000/svg"
+      >
+         <path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path>
+      </svg>
+   );
+};
 
-export default DropDownIcon
+export const AnalyticsIcon: React.FC<IconsProp> = ({ classes }) => {
+   return (
+      <svg
+         stroke="currentColor"
+         fill="currentColor"
+         className={classes}
+         strokeWidth="0"
+         viewBox="0 0 512 512"
+         height="1em"
+         width="1em"
+         xmlns="http://www.w3.org/2000/svg"
+      >
+         <path d="M379.4 178.3l-87.2 133.4C299 320 303 330.5 303 342c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-3 .3-6 .8-8.9l-57.6-33.5c-8.6 8.3-20.3 13.4-33.3 13.4-8.6 0-16.6-2.3-23.6-6.2L32 364.2v57.2c0 23.5 19.2 42.7 42.7 42.7h362.7c23.5 0 42.7-19.2 42.7-42.7V208.8l-58.6-38.9c-8.1 6.3-18.3 10.1-29.4 10.1-4.4 0-8.7-.6-12.7-1.7z"></path>
+         <path d="M117 217c26.5 0 48 21.5 48 48 0 2.1-.2 4.2-.4 6.2l60.1 33.6c8.3-6.8 18.8-10.8 30.4-10.8 3.6 0 7.1.4 10.4 1.1l87.4-135.4c-5.6-7.8-8.9-17.4-8.9-27.8 0-26.5 21.5-48 48-48s48 21.5 48 48c0 3.9-.5 7.7-1.3 11.3l41.3 27.6V90.7c0-23.5-19.2-42.7-42.7-42.7H74.7C51.2 48 32 67.2 32 90.7V320l40-38.3c-1.9-5.2-3-10.8-3-16.7 0-26.5 21.5-48 48-48z"></path>
+      </svg>
+   );
+};
+
+export const ChartIcon: React.FC<IconsProp> = ({ classes }) => {
+   return (
+      <svg
+         stroke="currentColor"
+         fill="currentColor"
+         strokeWidth={0}
+         viewBox="0 0 1024 1024"
+         height="1em"
+         width="1em"
+         className={classes}
+      >
+         <path d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm-600-80h56c4.4 0 8-3.6 8-8V560c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v144c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V384c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v320c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V462c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v242c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v400c0 4.4 3.6 8 8 8z" />
+      </svg>
+   );
+};
+
+export const UserIcon: React.FC<IconsProp> = ({ classes }) => {
+   return (
+      <svg
+         stroke="currentColor"
+         className={classes}
+         fill="currentColor"
+         strokeWidth="0"
+         viewBox="0 0 512 512"
+         height="1em"
+         width="1em"
+         xmlns="http://www.w3.org/2000/svg"
+      >
+         <path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"></path>
+      </svg>
+   );
+};
+
+export const SettingsIcon: React.FC<IconsProp> = ({ classes }) => {
+   return (
+      <svg
+         stroke="currentColor"
+         className={classes}
+         fill="currentColor"
+         strokeWidth="0"
+         viewBox="0 0 512 512"
+         height="1em"
+         width="1em"
+         xmlns="http://www.w3.org/2000/svg"
+      >
+         <path d="M413.967 276.8c1.06-6.235 1.06-13.518 1.06-20.8s-1.06-13.518-1.06-20.8l44.667-34.318c4.26-3.118 5.319-8.317 2.13-13.518L418.215 115.6c-2.129-4.164-8.507-6.235-12.767-4.164l-53.186 20.801c-10.638-8.318-23.394-15.601-36.16-20.801l-7.448-55.117c-1.06-4.154-5.319-8.318-10.638-8.318h-85.098c-5.318 0-9.577 4.164-10.637 8.318l-8.508 55.117c-12.767 5.2-24.464 12.482-36.171 20.801l-53.186-20.801c-5.319-2.071-10.638 0-12.767 4.164L49.1 187.365c-2.119 4.153-1.061 10.399 2.129 13.518L96.97 235.2c0 7.282-1.06 13.518-1.06 20.8s1.06 13.518 1.06 20.8l-44.668 34.318c-4.26 3.118-5.318 8.317-2.13 13.518L92.721 396.4c2.13 4.164 8.508 6.235 12.767 4.164l53.187-20.801c10.637 8.318 23.394 15.601 36.16 20.801l8.508 55.117c1.069 5.2 5.318 8.318 10.637 8.318h85.098c5.319 0 9.578-4.164 10.638-8.318l8.518-55.117c12.757-5.2 24.464-12.482 36.16-20.801l53.187 20.801c5.318 2.071 10.637 0 12.767-4.164l42.549-71.765c2.129-4.153 1.06-10.399-2.13-13.518l-46.8-34.317zm-158.499 52c-41.489 0-74.46-32.235-74.46-72.8s32.971-72.8 74.46-72.8 74.461 32.235 74.461 72.8-32.972 72.8-74.461 72.8z"></path>
+      </svg>
+   );
+};

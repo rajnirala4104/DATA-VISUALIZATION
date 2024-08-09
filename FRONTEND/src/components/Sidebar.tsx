@@ -1,8 +1,6 @@
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,6 +16,7 @@ import { CSSObject, styled, Theme, useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { AnalyticsIcon, ChartIcon } from "../icons";
 
 const drawerWidth = 240;
 
@@ -92,7 +91,17 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Sidebar() {
    const theme = useTheme();
-   const [open, setOpen] = React.useState(true);
+   const [open, setOpen] = React.useState(false);
+   const menus = [
+      {
+         title: "Charts",
+         icon: <ChartIcon classes="text-2xl" />,
+      },
+      {
+         title: "Analytics",
+         icon: <AnalyticsIcon classes="text-2xl" />,
+      },
+   ];
 
    const handleDrawerOpen = () => {
       setOpen(true);
@@ -136,15 +145,12 @@ export default function Sidebar() {
             </DrawerHeader>
             <Divider />
             <List>
-               {[
-                  "Analytics",
-                  "Charts",
-                  "CRM",
-                  "Ecommerce",
-                  "Academy",
-                  "Logisitcs",
-               ].map((text, index) => (
-                  <ListItem key={text} disablePadding sx={{ display: "block" }}>
+               {menus.map((singleObj, index) => (
+                  <ListItem
+                     key={index}
+                     disablePadding
+                     sx={{ display: "block" }}
+                  >
                      <ListItemButton
                         sx={{
                            minHeight: 48,
@@ -159,38 +165,10 @@ export default function Sidebar() {
                               justifyContent: "center",
                            }}
                         >
-                           {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                           {singleObj.icon}
                         </ListItemIcon>
                         <ListItemText
-                           primary={text}
-                           sx={{ opacity: open ? 1 : 0 }}
-                        />
-                     </ListItemButton>
-                  </ListItem>
-               ))}
-            </List>
-            <Divider />
-            <List>
-               {["All mail", "Trash", "Spam"].map((text, index) => (
-                  <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                     <ListItemButton
-                        sx={{
-                           minHeight: 48,
-                           justifyContent: open ? "initial" : "center",
-                           px: 2.5,
-                        }}
-                     >
-                        <ListItemIcon
-                           sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                           }}
-                        >
-                           {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                           primary={text}
+                           primary={singleObj.title}
                            sx={{ opacity: open ? 1 : 0 }}
                         />
                      </ListItemButton>
